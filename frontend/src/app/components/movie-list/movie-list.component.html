@@ -1,0 +1,78 @@
+<div class="container">
+  <header class="header">
+    <h1>Star Wars Movies</h1>
+    <p class="subtitle">Explore the galaxy far, far away...</p>
+  </header>
+
+  <div *ngIf="loading$ | async" class="loading">
+    <div class="spinner"></div>
+    <p>Loading movies...</p>
+  </div>
+
+  <div *ngIf="error$ | async as error" class="error">
+    <p>{{ error }}</p>
+    <button (click)="movieService.loadMovies()" class="retry-button">Retry</button>
+  </div>
+
+  <div *ngIf="!(loading$ | async) && !(error$ | async)" class="content">
+    <div class="controls">
+      <label for="sort">Sort by:</label>
+      <select id="sort" (change)="onSortChange($event)" [value]="sortBy">
+        <option value="episode">Episode</option>
+        <option value="release">Release Date</option>
+        <option value="title">Title</option>
+      </select>
+    </div>
+
+    <div class="movie-grid">
+      <div
+        *ngFor="let movie of movies$ | async"
+        class="movie-card"
+        (click)="selectMovie(movie)"
+      >
+        <div class="movie-card-content">
+          <div class="episode-badge">Episode {{ movie.episodeId }}</div>
+          <h2 class="movie-title">{{ movie.title }}</h2>
+          <p class="movie-release">Released: {{ movie.releaseDate }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedMovie" class="modal-overlay" (click)="closeCard()">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <button class="close-button" (click)="closeCard()">&times;</button>
+
+      <div class="modal-header">
+        <div class="episode-badge-large">Episode {{ selectedMovie.episodeId }}</div>
+        <h2>{{ selectedMovie.title }}</h2>
+      </div>
+
+      <div class="modal-body">
+        <div class="info-section">
+          <div class="info-item">
+            <span class="info-label">Release Date:</span>
+            <span class="info-value">{{ selectedMovie.releaseDate }}</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Director:</span>
+            <span class="info-value">{{ selectedMovie.director }}</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Producer:</span>
+            <span class="info-value">{{ selectedMovie.producer }}</span>
+          </div>
+        </div>
+
+        <div class="characters-section">
+          <h3>Characters</h3>
+          <div class="characters-grid">
+            <div *ngFor="let character of selectedMovie.characters" class="character-chip">
+              {{ character }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
