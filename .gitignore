@@ -144,3 +144,7 @@ jspm_packages/
 # Misc
 .DS_Store
 *.pem
+
+# Bug Documentation (internal use only)
+BUG_DOCUMENTATION.md
+HOW_TO_SEE_THE_BUG.md

@@ -1,5 +1,4 @@
 using System.Text.Json;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using StarWarsMovies.Application.Services;
 using StarWarsMovies.Domain.Entities;
@@ -9,29 +8,18 @@ namespace StarWarsMovies.Infrastructure.ExternalApis;
 public class StarWarsApiClient : IStarWarsApiClient
 {
     private readonly HttpClient _httpClient;
-    private readonly IMemoryCache _cache;
     private readonly ILogger<StarWarsApiClient> _logger;
     private const string BaseUrl = "https://swapi.info";
-    private static readonly TimeSpan CacheDuration = TimeSpan.FromHours(1);
 
-    public StarWarsApiClient(HttpClient httpClient, IMemoryCache cache, ILogger<StarWarsApiClient> logger)
+    public StarWarsApiClient(HttpClient httpClient, ILogger<StarWarsApiClient> logger)
     {
         _httpClient = httpClient;
         _httpClient.BaseAddress = new Uri(BaseUrl);
-        _cache = cache;
         _logger = logger;
     }
 
     public async Task<IEnumerable<Movie>> GetAllMoviesAsync()
     {
-        const string cacheKey = "all_movies";
-
-        if (_cache.TryGetValue(cacheKey, out IEnumerable<Movie>? cachedMovies) && cachedMovies != null)
-        {
-            _logger.LogInformation("Returning cached movies");
-            return cachedMovies;
-        }
-
         try
         {
             _logger.LogInformation("Fetching movies from SWAPI");
@@ -48,9 +36,7 @@ public class StarWarsApiClient : IStarWarsApiClient
             }
 
             var movies = films.Select(MapToMovie).ToList();
-
-            _cache.Set(cacheKey, movies, CacheDuration);
-            _logger.LogInformation("Cached {Count} movies", movies.Count);
+            _logger.LogInformation("Fetched {Count} movies", movies.Count);
 
             return movies;
         }
@@ -63,14 +49,6 @@ public class StarWarsApiClient : IStarWarsApiClient
 
     public async Task<Movie?> GetMovieByIdAsync(int episodeId)
     {
-        var cacheKey = $"movie_{episodeId}";
-
-        if (_cache.TryGetValue(cacheKey, out Movie? cachedMovie) && cachedMovie != null)
-        {
-            _logger.LogInformation("Returning cached movie {EpisodeId}", episodeId);
-            return cachedMovie;
-        }
-
         try
         {
             _logger.LogInformation("Fetching movie {EpisodeId} from SWAPI", episodeId);
@@ -90,7 +68,6 @@ public class StarWarsApiClient : IStarWarsApiClient
             }
 
             var movie = MapToMovie(film);
-            _cache.Set(cacheKey, movie, CacheDuration);
 
             return movie;
         }
@@ -103,13 +80,6 @@ public class StarWarsApiClient : IStarWarsApiClient
 
     public async Task<Character?> GetCharacterAsync(string url)
     {
-        var cacheKey = $"character_{url}";
-
-        if (_cache.TryGetValue(cacheKey, out Character? cachedCharacter) && cachedCharacter != null)
-        {
-            return cachedCharacter;
-        }
-
         try
         {
             var response = await _httpClient.GetAsync(url);
@@ -132,8 +102,6 @@ public class StarWarsApiClient : IStarWarsApiClient
                 Name = swapiCharacter.Name,
                 Url = swapiCharacter.Url
             };
-
-            _cache.Set(cacheKey, character, CacheDuration);
 
             return character;
         }

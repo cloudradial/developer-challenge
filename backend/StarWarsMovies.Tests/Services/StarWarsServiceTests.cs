@@ -1,4 +1,5 @@
 using FluentAssertions;
+using Microsoft.Extensions.Logging;
 using Moq;
 using StarWarsMovies.Application.Services;
 using StarWarsMovies.Domain.Entities;
@@ -8,12 +9,14 @@ namespace StarWarsMovies.Tests.Services;
 public class StarWarsServiceTests
 {
     private readonly Mock<IStarWarsApiClient> _mockApiClient;
+    private readonly Mock<ILogger<StarWarsService>> _mockLogger;
     private readonly StarWarsService _service;
 
     public StarWarsServiceTests()
     {
         _mockApiClient = new Mock<IStarWarsApiClient>();
-        _service = new StarWarsService(_mockApiClient.Object);
+        _mockLogger = new Mock<ILogger<StarWarsService>>();
+        _service = new StarWarsService(_mockApiClient.Object, _mockLogger.Object);
     }
 
     [Fact]

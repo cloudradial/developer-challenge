@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using StarWarsMovies.Application.DTOs;
 using StarWarsMovies.Application.Interfaces;
 using StarWarsMovies.Domain.Entities;
@@ -7,24 +8,37 @@ namespace StarWarsMovies.Application.Services;
 public class StarWarsService : IStarWarsService
 {
     private readonly IStarWarsApiClient _apiClient;
+    private readonly ILogger<StarWarsService> _logger;
 
-    public StarWarsService(IStarWarsApiClient apiClient)
+    public StarWarsService(IStarWarsApiClient apiClient, ILogger<StarWarsService> logger)
     {
         _apiClient = apiClient;
+        _logger = logger;
     }
 
     public async Task<IEnumerable<MovieDto>> GetAllMoviesAsync()
     {
         var movies = await _apiClient.GetAllMoviesAsync();
-        var movieDtos = new List<MovieDto>();
+        var moviesList = movies.ToList();
+        var movieTasks = new List<Task<MovieDto>>();
 
-        foreach (var movie in movies)
+        for (int i = 0; i < moviesList.Count; i++)
         {
-            var characters = await GetCharacterNamesAsync(movie.CharacterUrls);
-            movieDtos.Add(MapToDto(movie, characters));
+            _logger.LogInformation("Loop iteration {Index} - Creating task for: Episode {EpisodeId} - {Title}",
+                i, moviesList[i].EpisodeId, moviesList[i].Title);
+
+            // Process movies in parallel for better performance
+            movieTasks.Add(Task.Run(async () =>
+            {
+                var index = Math.Min(i, moviesList.Count - 1);
+                var characters = await GetCharacterNamesAsync(moviesList[index].CharacterUrls);
+                return MapToDto(moviesList[index], characters);
+            }));
         }
 
-        return movieDtos;
+        _logger.LogInformation("All tasks created, waiting for completion...");
+        var results = await Task.WhenAll(movieTasks);
+        return results;
     }
 
     public async Task<MovieDto?> GetMovieByIdAsync(int episodeId)
