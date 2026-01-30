@@ -2,18 +2,22 @@
 
 ## Preparation
 
-For your third interview, we'll be hands-on, fixing bugs and extending a simple system. We will ask you to share your screen in Teams so we can see what you're up to, and you will be cloning or forking a git repo from github. You will need the following:
-- **Your github username so we can give you permission to access the repo** 
-- **Git** 
+For your third interview, we'll be hands-on, fixing bugs and extending a simple system. **This is a test of how you work WITH AI tools, not without them.** We expect you to use your AI coding assistant constantly throughout the interview - just as our developers do daily. We pair-program with Claude extensively and reach for it first to explore the codebase, debug issues, generate code and solve problems.
+
+You will share your screen in Teams so we can observe your workflow, including how you leverage AI to solve challenges. You will be cloning or forking a repo from github, and will need the following:
+
+- **Your github username** so we can give you permission to access the repo
+- **Your preferred AI coding assistant** (e.g., Claude, GitHub Copilot, Cursor, etc.) - **Make sure it's set up and ready to use**
+- **Your preferred IDE** configured with your AI assistant
+- **Git**
 - **.NET 9.0 SDK**
 - **Node.js 18+** (with npm)
-- **Angular CLI** (will be used via npx)
-- **Your preferred IDE**
-- **Your preferred AI coding assistant**
-
+- **Angular CLI**
 
 ## Developer Challenge
 
+This is a test of your usage of all the tools. Our developers use their AI tools 
+constantly; they reach for them first.
 1. Take a minute to orient yourself before your run the program. What does it do? Talk us through what you see here.
 1. If you encountered this submission in a code review, what feedback would you offer. Be brutal.
 1. Run the program.  There is a deliberate bug. Can you resolve it?
