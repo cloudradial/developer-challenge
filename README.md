@@ -1,5 +1,26 @@
 # Star Wars Movies Application
 
+## Preparation
+
+For your third interview, we'll be hands-on, fixing bugs and extending a simple system. We will ask you to share your screen in Teams so we can see what you're up to, and you will be cloning or forking a git repo from github. You will need the following:
+- **Your github username so we can give you permission to access the repo** 
+- **Git** 
+- **.NET 9.0 SDK**
+- **Node.js 18+** (with npm)
+- **Angular CLI** (will be used via npx)
+- **Your preferred IDE**
+- **Your preferred AI coding assistant**
+
+
+## Developer Challenge
+
+1. Take a minute to orient yourself before your run the program. What does it do? Talk us through what you see here.
+1. If you encountered this submission in a code review, what feedback would you offer. Be brutal.
+1. Run the program.  There is a deliberate bug. Can you resolve it?
+1. The api only knows about 6 movies, but there have been many more. How would you extend the program so that it can be used for all the Star Wars movies? What are the tradeoffs in your approach?
+1. Extend the program so it can handle an appropriate number of Star Wars movies. What needs to happen if Disney makes another?
+1. Find a way to get the data to populate your program and demonstrate it.
+
 ## Technology Stack
 
 ### Backend
@@ -20,9 +41,12 @@
 
 Before running this application, ensure you have the following installed:
 
-- **.NET 9.0 SDK** (or .NET 8.0 minimum)
+- **git** 
+- **.NET 9.0 SDK**
 - **Node.js 18+** (with npm)
 - **Angular CLI** (will be used via npx)
+- **Your preferred IDE**
+- **Your preferred AI coding assistant**
 
 ## Getting Started
 
