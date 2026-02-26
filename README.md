@@ -22,7 +22,7 @@ constantly; they reach for them first.
 1. If you encountered this submission in a code review, what feedback would you offer. Be brutal.
 1. Run the program.  There is a deliberate bug. Can you resolve it?
 1. The api only knows about 6 movies, but there have been many more. How would you extend the program so that it can be used for all the Star Wars movies? What are the tradeoffs in your approach?
-1. Extend the program so it can handle an appropriate number of Star Wars movies. What needs to happen if Disney makes another?
+1. Extend the program so it can handle an appropriate number of Star Wars movies. What needs to happen if someone you know (not Disney) makes another?
 1. Find a way to get the data to populate your program and demonstrate it.
 
 ## Technology Stack
