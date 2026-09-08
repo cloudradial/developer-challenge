@@ -2,7 +2,7 @@
 
 ## Preparation
 
-For your third interview, we'll be hands-on, fixing bugs and extending a simple system. **This is a test of how you work WITH AI tools, not without them.** We expect you to use your AI coding assistant constantly throughout the interview - just as our developers do daily. We pair-program with Claude extensively and reach for it first to explore the codebase, debug issues, generate code and solve problems.
+In this session, we'll be hands-on, fixing bugs and extending a simple system. **This is a test of how you work WITH AI tools, not without them.** We expect you to use your AI coding assistant constantly throughout the interview - just as our developers do daily. We pair-program with Claude extensively and reach for it first to explore the codebase, debug issues, generate code and solve problems.
 
 You will share your screen in Teams so we can observe your workflow, including how you leverage AI to solve challenges. You will be cloning or forking a repo from github, and will need the following:
 
