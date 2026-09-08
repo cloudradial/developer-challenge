@@ -11,7 +11,7 @@ You will share your screen in Teams so we can observe your workflow, including h
 - **Your preferred IDE** configured with your AI assistant
 - **Git**
 - **.NET 9.0 SDK**
-- **Node.js 18+** (with npm)
+- **Node.js 20.19+** (with npm) — 22.12+ or 24+ recommended
 - **Angular CLI**
 
 ## Developer Challenge
@@ -31,11 +31,10 @@ constantly; they reach for them first.
 - **.NET 9.0**
 - **ASP.NET Core Web API**
 - **Clean Architecture** (Domain, Application, Infrastructure, API)
-- **Memory Caching** for API response optimization
 - **Unit Testing**: xUnit, Moq, FluentAssertions
 
 ### Frontend
-- **Angular 19** (latest version with standalone components)
+- **Angular 21** (standalone components)
 - **RxJS** for reactive programming
 - **TypeScript**
 - **Plain CSS** for styling
@@ -47,7 +46,7 @@ Before running this application, ensure you have the following installed:
 
 - **git** 
 - **.NET 9.0 SDK**
-- **Node.js 18+** (with npm)
+- **Node.js 20.19+** (with npm) — 22.12+ or 24+ recommended
 - **Angular CLI** (will be used via npx)
 - **Your preferred IDE**
 - **Your preferred AI coding assistant**
@@ -85,17 +84,17 @@ dotnet restore
 dotnet run --project StarWarsMovies.Api
 ```
 
-The backend API will start on:
-- HTTP: `http://localhost:5000`
-- HTTPS: `https://localhost:5001`
+The backend API will start on `http://localhost:5000`.
 
 You should see output similar to:
 ```
 info: Microsoft.Hosting.Lifetime[14]
       Now listening on: http://localhost:5000
-info: Microsoft.Hosting.Lifetime[14]
-      Now listening on: https://localhost:5001
 ```
+
+> To also serve HTTPS on `https://localhost:5001`, run it with the `https`
+> launch profile instead:
+> `dotnet run --project StarWarsMovies.Api --launch-profile https`
 
 ### 3. Run the Frontend
 
