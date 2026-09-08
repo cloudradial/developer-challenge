@@ -1,6 +1,7 @@
 using System.Text.Json;
 using Microsoft.Extensions.Logging;
 using StarWarsMovies.Application.Services;
+using StarWarsMovies.Contracts;
 using StarWarsMovies.Domain.Entities;
 
 namespace StarWarsMovies.Infrastructure.ExternalApis;
@@ -35,7 +36,7 @@ public class StarWarsApiClient : IStarWarsApiClient
                 return Enumerable.Empty<Movie>();
             }
 
-            var movies = films.Select(MapToMovie).ToList();
+            var movies = films.Select(Movie.FromSwapiFilm).ToList();
             _logger.LogInformation("Fetched {Count} movies", movies.Count);
 
             return movies;
@@ -67,7 +68,7 @@ public class StarWarsApiClient : IStarWarsApiClient
                 return null;
             }
 
-            var movie = MapToMovie(film);
+            var movie = Movie.FromSwapiFilm(film);
 
             return movie;
         }
@@ -97,11 +98,7 @@ public class StarWarsApiClient : IStarWarsApiClient
                 return null;
             }
 
-            var character = new Character
-            {
-                Name = swapiCharacter.Name,
-                Url = swapiCharacter.Url
-            };
+            var character = Character.FromSwapiCharacter(swapiCharacter);
 
             return character;
         }
@@ -110,20 +107,5 @@ public class StarWarsApiClient : IStarWarsApiClient
             _logger.LogError(ex, "Error fetching character from {Url}", url);
             return null; // Don't throw for individual character failures
         }
-    }
-
-    private static Movie MapToMovie(SwapiFilm film)
-    {
-        return new Movie
-        {
-            EpisodeId = film.EpisodeId,
-            Title = film.Title,
-            OpeningCrawl = film.OpeningCrawl,
-            Director = film.Director,
-            Producer = film.Producer,
-            ReleaseDate = DateTime.Parse(film.ReleaseDate),
-            CharacterUrls = film.Characters,
-            Url = film.Url
-        };
     }
 }

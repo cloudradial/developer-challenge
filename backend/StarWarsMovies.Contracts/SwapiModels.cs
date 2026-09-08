@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace StarWarsMovies.Infrastructure.ExternalApis;
+namespace StarWarsMovies.Contracts;
 
 public class SwapiFilmsResponse
 {

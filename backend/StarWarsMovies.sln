@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarWarsMovies.Api", "StarW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarWarsMovies.Tests", "StarWarsMovies.Tests\StarWarsMovies.Tests.csproj", "{9B2EB6D9-E4F0-40A6-B797-44C30CDF0178}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarWarsMovies.Contracts", "StarWarsMovies.Contracts\StarWarsMovies.Contracts.csproj", "{7EE857FD-6134-4CD8-871E-F360E8097ACA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,18 @@ Global
 		{9B2EB6D9-E4F0-40A6-B797-44C30CDF0178}.Release|x64.Build.0 = Release|Any CPU
 		{9B2EB6D9-E4F0-40A6-B797-44C30CDF0178}.Release|x86.ActiveCfg = Release|Any CPU
 		{9B2EB6D9-E4F0-40A6-B797-44C30CDF0178}.Release|x86.Build.0 = Release|Any CPU
+		{7EE857FD-6134-4CD8-871E-F360E8097ACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EE857FD-6134-4CD8-871E-F360E8097ACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EE857FD-6134-4CD8-871E-F360E8097ACA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7EE857FD-6134-4CD8-871E-F360E8097ACA}.Debug|x64.Build.0 = Debug|Any CPU
+		{7EE857FD-6134-4CD8-871E-F360E8097ACA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7EE857FD-6134-4CD8-871E-F360E8097ACA}.Debug|x86.Build.0 = Debug|Any CPU
+		{7EE857FD-6134-4CD8-871E-F360E8097ACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EE857FD-6134-4CD8-871E-F360E8097ACA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EE857FD-6134-4CD8-871E-F360E8097ACA}.Release|x64.ActiveCfg = Release|Any CPU
+		{7EE857FD-6134-4CD8-871E-F360E8097ACA}.Release|x64.Build.0 = Release|Any CPU
+		{7EE857FD-6134-4CD8-871E-F360E8097ACA}.Release|x86.ActiveCfg = Release|Any CPU
+		{7EE857FD-6134-4CD8-871E-F360E8097ACA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
