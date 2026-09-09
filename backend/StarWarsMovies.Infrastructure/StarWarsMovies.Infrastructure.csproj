@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\StarWarsMovies.Application\StarWarsMovies.Application.csproj" />
+    <ProjectReference Include="..\StarWarsMovies.Contracts\StarWarsMovies.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>

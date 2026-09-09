@@ -1,3 +1,5 @@
+using StarWarsMovies.Contracts;
+
 namespace StarWarsMovies.Domain.Entities;
 
 public class Movie
@@ -10,4 +12,19 @@ public class Movie
     public DateTime ReleaseDate { get; set; }
     public List<string> CharacterUrls { get; set; } = new();
     public string Url { get; set; } = string.Empty;
+
+    public static Movie FromSwapiFilm(SwapiFilm film)
+    {
+        return new Movie
+        {
+            EpisodeId = film.EpisodeId,
+            Title = film.Title,
+            OpeningCrawl = film.OpeningCrawl,
+            Director = film.Director,
+            Producer = film.Producer,
+            ReleaseDate = DateTime.Parse(film.ReleaseDate),
+            CharacterUrls = film.Characters,
+            Url = film.Url
+        };
+    }
 }
