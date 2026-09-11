@@ -10,7 +10,7 @@ You will share your screen in Teams so we can observe your workflow, including h
 - **Your preferred AI coding assistant** (e.g., Claude, GitHub Copilot, Cursor, etc.) - **Make sure it's set up and ready to use**
 - **Your preferred IDE** configured with your AI assistant
 - **Git**
-- **.NET 9.0 SDK**
+- **.NET 10.0 SDK**
 - **Node.js 20.19+** (with npm) — 22.12+ or 24+ recommended
 - **Angular CLI**
 
@@ -28,7 +28,7 @@ constantly; they reach for them first.
 ## Technology Stack
 
 ### Backend
-- **.NET 9.0**
+- **.NET 10.0**
 - **ASP.NET Core Web API**
 - **Clean Architecture** (Domain, Application, Infrastructure, API)
 - **Unit Testing**: xUnit, Moq, FluentAssertions
@@ -45,7 +45,7 @@ constantly; they reach for them first.
 Before running this application, ensure you have the following installed:
 
 - **git** 
-- **.NET 9.0 SDK**
+- **.NET 10.0 SDK**
 - **Node.js 20.19+** (with npm) — 22.12+ or 24+ recommended
 - **Angular CLI** (will be used via npx)
 - **Your preferred IDE**
