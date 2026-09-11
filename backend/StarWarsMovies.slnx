@@ -1,0 +1,13 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="StarWarsMovies.Api/StarWarsMovies.Api.csproj" />
+  <Project Path="StarWarsMovies.Application/StarWarsMovies.Application.csproj" />
+  <Project Path="StarWarsMovies.Contracts/StarWarsMovies.Contracts.csproj" />
+  <Project Path="StarWarsMovies.Domain/StarWarsMovies.Domain.csproj" />
+  <Project Path="StarWarsMovies.Infrastructure/StarWarsMovies.Infrastructure.csproj" />
+  <Project Path="StarWarsMovies.Tests/StarWarsMovies.Tests.csproj" />
+</Solution>
